@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct MovieItemView: View {
+    let title: String
+    let imageUrl: String
     let width: Double
     var body: some View {
         ZStack (alignment: .bottomLeading) {
-            RoundedRectangle(cornerRadius: 5.0).stroke()
-            Text("Avengers Endgame")
+            AsyncImage(url: URL(string: imageUrl)) { image in
+                image.resizable().aspectRatio(2 / 3 ,contentMode: .fill).frame(width: width,height: 1.5 * width)
+            } placeholder: {
+                RoundedRectangle(cornerRadius: 5.0).frame(width: width,height: 1.5 * width)
+            }
+            .aspectRatio(contentMode: .fill)
+            .clipShape(RoundedRectangle(cornerRadius: 5.0))
+            Text(title)
+                .foregroundColor(.white)
                 .padding(2.0)
                 .background(
                     RoundedRectangle(cornerRadius: 5.0)
@@ -21,12 +30,11 @@ struct MovieItemView: View {
                         )
                 )
         }
-        .frame(width: width * 0.9, height: width *  1.35)
     }
 }
 
 struct MovieItemView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieItemView(width: 100.0)
+        MovieItemView(title: "Marvel",imageUrl: "https://m.media-amazon.com/images/M/MV5BMTE0YWFmOTMtYTU2ZS00ZTIxLWE3OTEtYTNiYzBkZjViZThiXkEyXkFqcGdeQXVyODMzMzQ4OTI@._V1_SX300.jpg", width: 100)
     }
 }

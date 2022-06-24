@@ -17,6 +17,11 @@
 		7296E100286559FD008CD375 /* MovieScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7296E0FF286559FC008CD375 /* MovieScrollView.swift */; };
 		7296E10428655ACD008CD375 /* View+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7296E10328655ACD008CD375 /* View+extensions.swift */; };
 		7296E10628655BDA008CD375 /* MovieItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7296E10528655BDA008CD375 /* MovieItemView.swift */; };
+		7296E10B28655CB1008CD375 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7296E10A28655CB1008CD375 /* NetworkManager.swift */; };
+		7296E10D28655D08008CD375 /* APIResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7296E10C28655D08008CD375 /* APIResponseModel.swift */; };
+		7296E1112865AA8B008CD375 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7296E1102865AA8B008CD375 /* Constants.swift */; };
+		7296E1122865B61A008CD375 /* sampleResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 7296E10F2865A858008CD375 /* sampleResponse.json */; };
+		7296E1142865BED8008CD375 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7296E1132865BED8008CD375 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +55,11 @@
 		7296E0FF286559FC008CD375 /* MovieScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieScrollView.swift; sourceTree = "<group>"; };
 		7296E10328655ACD008CD375 /* View+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extensions.swift"; sourceTree = "<group>"; };
 		7296E10528655BDA008CD375 /* MovieItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieItemView.swift; sourceTree = "<group>"; };
+		7296E10A28655CB1008CD375 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		7296E10C28655D08008CD375 /* APIResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseModel.swift; sourceTree = "<group>"; };
+		7296E10F2865A858008CD375 /* sampleResponse.json */ = {isa = PBXFileReference; explicitFileType = text.json; fileEncoding = 4; path = sampleResponse.json; sourceTree = "<group>"; };
+		7296E1102865AA8B008CD375 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7296E1132865BED8008CD375 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +110,8 @@
 		725905082864A55000004653 /* Movie Time */ = {
 			isa = PBXGroup;
 			children = (
+				7296E10E2865A83C008CD375 /* JSON */,
+				7296E10928655C9E008CD375 /* Service */,
 				7296E10828655BFA008CD375 /* Model */,
 				7296E10128655A87008CD375 /* View */,
 				7296E10728655BEC008CD375 /* ViewModel */,
@@ -107,6 +119,8 @@
 				725905092864A55000004653 /* Movie_TimeApp.swift */,
 				7259050D2864A55300004653 /* Assets.xcassets */,
 				7259050F2864A55300004653 /* Preview Content */,
+				7296E1102865AA8B008CD375 /* Constants.swift */,
+				7296E1132865BED8008CD375 /* .gitignore */,
 			);
 			path = "Movie Time";
 			sourceTree = "<group>";
@@ -164,8 +178,25 @@
 		7296E10828655BFA008CD375 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7296E10A28655CB1008CD375 /* NetworkManager.swift */,
+				7296E10C28655D08008CD375 /* APIResponseModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		7296E10928655C9E008CD375 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		7296E10E2865A83C008CD375 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				7296E10F2865A858008CD375 /* sampleResponse.json */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +303,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7296E1142865BED8008CD375 /* .gitignore in Resources */,
+				7296E1122865B61A008CD375 /* sampleResponse.json in Resources */,
 				725905112864A55300004653 /* Preview Assets.xcassets in Resources */,
 				7259050E2864A55300004653 /* Assets.xcassets in Resources */,
 			);
@@ -300,6 +333,9 @@
 			files = (
 				7259050C2864A55000004653 /* ContentView.swift in Sources */,
 				7296E100286559FD008CD375 /* MovieScrollView.swift in Sources */,
+				7296E10B28655CB1008CD375 /* NetworkManager.swift in Sources */,
+				7296E10D28655D08008CD375 /* APIResponseModel.swift in Sources */,
+				7296E1112865AA8B008CD375 /* Constants.swift in Sources */,
 				7296E10428655ACD008CD375 /* View+extensions.swift in Sources */,
 				7296E10628655BDA008CD375 /* MovieItemView.swift in Sources */,
 				7259050A2864A55000004653 /* Movie_TimeApp.swift in Sources */,
