@@ -14,6 +14,9 @@
 		7259051B2864A55300004653 /* Movie_TimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7259051A2864A55300004653 /* Movie_TimeTests.swift */; };
 		725905252864A55300004653 /* Movie_TimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725905242864A55300004653 /* Movie_TimeUITests.swift */; };
 		725905272864A55300004653 /* Movie_TimeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725905262864A55300004653 /* Movie_TimeUITestsLaunchTests.swift */; };
+		7296E100286559FD008CD375 /* MovieScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7296E0FF286559FC008CD375 /* MovieScrollView.swift */; };
+		7296E10428655ACD008CD375 /* View+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7296E10328655ACD008CD375 /* View+extensions.swift */; };
+		7296E10628655BDA008CD375 /* MovieItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7296E10528655BDA008CD375 /* MovieItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		725905202864A55300004653 /* Movie TimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Movie TimeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		725905242864A55300004653 /* Movie_TimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie_TimeUITests.swift; sourceTree = "<group>"; };
 		725905262864A55300004653 /* Movie_TimeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie_TimeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7296E0FF286559FC008CD375 /* MovieScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieScrollView.swift; sourceTree = "<group>"; };
+		7296E10328655ACD008CD375 /* View+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extensions.swift"; sourceTree = "<group>"; };
+		7296E10528655BDA008CD375 /* MovieItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +100,11 @@
 		725905082864A55000004653 /* Movie Time */ = {
 			isa = PBXGroup;
 			children = (
+				7296E10828655BFA008CD375 /* Model */,
+				7296E10128655A87008CD375 /* View */,
+				7296E10728655BEC008CD375 /* ViewModel */,
+				7296E10228655AA1008CD375 /* Helpers */,
 				725905092864A55000004653 /* Movie_TimeApp.swift */,
-				7259050B2864A55000004653 /* ContentView.swift */,
 				7259050D2864A55300004653 /* Assets.xcassets */,
 				7259050F2864A55300004653 /* Preview Content */,
 			);
@@ -125,6 +134,38 @@
 				725905262864A55300004653 /* Movie_TimeUITestsLaunchTests.swift */,
 			);
 			path = "Movie TimeUITests";
+			sourceTree = "<group>";
+		};
+		7296E10128655A87008CD375 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7259050B2864A55000004653 /* ContentView.swift */,
+				7296E0FF286559FC008CD375 /* MovieScrollView.swift */,
+				7296E10528655BDA008CD375 /* MovieItemView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7296E10228655AA1008CD375 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7296E10328655ACD008CD375 /* View+extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7296E10728655BEC008CD375 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7296E10828655BFA008CD375 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +299,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7259050C2864A55000004653 /* ContentView.swift in Sources */,
+				7296E100286559FD008CD375 /* MovieScrollView.swift in Sources */,
+				7296E10428655ACD008CD375 /* View+extensions.swift in Sources */,
+				7296E10628655BDA008CD375 /* MovieItemView.swift in Sources */,
 				7259050A2864A55000004653 /* Movie_TimeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
