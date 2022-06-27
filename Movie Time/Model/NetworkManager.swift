@@ -18,7 +18,9 @@ class NetworkManager {
     let decoder = JSONDecoder()
     
     func getMovies(searchTerm: String, page: Int) async -> MovieScrollModel? {
-        let safeSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let safeSearchTerm = searchTerm
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         guard let url = URL(string: "https://www.omdbapi.com/?apikey=\(apiKey)&s=\(safeSearchTerm)&page=\(String(page + 1))&type=movie") else { fatalError("Invalid Url.")}
         
         let urlRequest = URLRequest(url: url)
