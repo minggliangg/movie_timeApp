@@ -8,42 +8,47 @@
 import SwiftUI
 
 struct MovieScrollView: View {
-    @ObservedObject var networkManager = NetworkManager.shared
-    @State var textInput = ""
+    @StateObject var viewModel = MovieScrollViewModel()
     let columnWidth: Double
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: [GridItem(.fixed(columnWidth)),GridItem(.fixed(columnWidth))], alignment: .center, pinnedViews: .sectionHeaders) {
-                
-                Section(header: HStack (alignment: .center) {
-                    TextField( "Search", text: $textInput)
-                        .padding(4.0)
-                        .overlay(RoundedRectangle(cornerRadius: 5.0).stroke())
-                        .padding()
-                    Button(action: {
-                        print(textInput)
-                        hideKeyboard()
-                    }) {
-                        Image(systemName: "magnifyingglass.circle.fill").font(.system(size: 32.0))
-                    }}
-                    .background(
-                        Color.white
-                            .ignoresSafeArea()
-                            .shadow(color: .gray.opacity(0.5), radius: 2, x: 0.0, y: 4.0)
-                    )) {
-                        ForEach(networkManager.movies) { item in
-                            MovieItemView(title: item.Title,imageUrl: item.Poster, width: columnWidth)
-                        }.padding()
+            ScrollViewReader { reader in
+                LazyVGrid(columns: [GridItem(.fixed(columnWidth)),GridItem(.fixed(columnWidth))], alignment: .center, pinnedViews: .sectionHeaders) {
+                    Section(
+                        header: SearchBarView(performSearch: { searchTerm in
+                          Task {
+                              await self.viewModel.performSearch(on: searchTerm)
+                            }
+                           
+                        })
+                    ) {
+                        let movies = viewModel.movies
+                        if movies.count > 0 {
+                            ForEach(0...(movies.count - 1), id: \.self) { i in
+                                MovieItemView(title: movies[i].Title,imageUrl: movies[i].Poster, width: columnWidth).onAppear {
+                                    if (viewModel.movies.count - 1) == i {
+                                        Task {
+                                            await self.viewModel.fetchData()
+                                        }
+                                        
+                                    }
+                                }
+                            }.padding()
+                        }
                     }
-                
+                }
             }
+          
         }.gesture(DragGesture().onChanged({ _ in
             hideKeyboard()
         }))
         .onTapGesture {
             hideKeyboard()
         }.onAppear{
-            self.networkManager.fakeGetMovies(searchTerm: "Girl Who", page: 1)
+            Task {
+                await self.viewModel.fetchData()
+            }
+           
         }
     }
 }

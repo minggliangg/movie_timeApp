@@ -8,57 +8,28 @@
 import Foundation
 import Combine
 
-class NetworkManager: ObservableObject {
+class NetworkManager {
     
     static let shared = NetworkManager()
     
     let apiKey = Constants.OMDBAPI
+    let defaultSession = URLSession(configuration: .default)
+    var dataTask: URLSessionDataTask?
+    let decoder = JSONDecoder()
     
-    @Published var movies = [Movie]()
-    @Published var totalResult = 0
-    @Published var currentPage = 0
-    
-    func getMovies(searchTerm: String, page: Int) {
+    func getMovies(searchTerm: String, page: Int) async -> MovieScrollModel? {
         let safeSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        if let url = URL(string: "https://www.omdbapi.com/?apikey=\(apiKey)&s=\(safeSearchTerm)&page=\(String(page))") {
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { data, response, error in
-                if error == nil {
-                    let decoder = JSONDecoder()
-                    if let safeData = data {
-                        do {
-                            let apiResponse = try decoder.decode(APIResponse.self, from: safeData)
-                            DispatchQueue.main.async {
-                                self.movies = apiResponse.Search
-                                self.totalResult = Int(apiResponse.totalResults) ?? 0
-                                self.currentPage = page
-                            }
-                            
-                        } catch {
-                            print (error)
-                        }
-                    }
-                }
-            }
-            task.resume()
+        guard let url = URL(string: "https://www.omdbapi.com/?apikey=\(apiKey)&s=\(safeSearchTerm)&page=\(String(page + 1))&type=movie") else { fatalError("Invalid Url.")}
+        
+        let urlRequest = URLRequest(url: url)
+        do {
+            let (data, response) = try await URLSession.shared.data(for: urlRequest)
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Error while fetching data") }
+            let result = try decoder.decode(APIResponse.self, from: data )
+            return MovieScrollModel(movies: result.Search, totalResult: Int(result.totalResults) ?? 0, currentPage: page + 1)
+        } catch {
+            print (error)
         }
-    }
-    
-    // MARK: Fake Endpoint
-    func fakeGetMovies(searchTerm: String, page: Int) {
-        if let url = Bundle.main.url(forResource: "sampleResponse", withExtension: "json") {
-                do {
-                    let data = try Data(contentsOf: url)
-                    let decoder = JSONDecoder()
-                    let response = try decoder.decode(APIResponse.self, from: data  )
-                    DispatchQueue.main.async {
-                        self.movies = response.Search
-                        self.totalResult = Int(response.totalResults) ?? 0
-                        self.currentPage = page
-                    }
-                } catch {
-                    print("error:\(error)")
-                }
-            }
+        return nil
     }
 }

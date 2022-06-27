@@ -14,7 +14,7 @@ struct MovieItemView: View {
     var body: some View {
         ZStack (alignment: .bottomLeading) {
             AsyncImage(url: URL(string: imageUrl)) { image in
-                image.resizable().aspectRatio(2 / 3 ,contentMode: .fill).frame(width: width,height: 1.5 * width)
+                image.resizable().aspectRatio(2 / 3 ,contentMode: .fill).frame(width: width,height: 1.5 * width).background( RoundedRectangle(cornerRadius: 5.0).frame(width: width,height: 1.5 * width))
             } placeholder: {
                 RoundedRectangle(cornerRadius: 5.0).frame(width: width,height: 1.5 * width)
             }
