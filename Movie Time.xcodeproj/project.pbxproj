@@ -24,7 +24,7 @@
 		7296E1142865BED8008CD375 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7296E1132865BED8008CD375 /* .gitignore */; };
 		7296E1182866105C008CD375 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7296E1172866105C008CD375 /* SearchBarView.swift */; };
 		7296E11C286611BD008CD375 /* MovieScrollViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7296E11B286611BD008CD375 /* MovieScrollViewModel.swift */; };
-		7296E11E286612F9008CD375 /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7296E11D286612F9008CD375 /* ContentModel.swift */; };
+		7296E11E286612F9008CD375 /* MovieScrollModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7296E11D286612F9008CD375 /* MovieScrollModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +65,7 @@
 		7296E1132865BED8008CD375 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7296E1172866105C008CD375 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		7296E11B286611BD008CD375 /* MovieScrollViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieScrollViewModel.swift; sourceTree = "<group>"; };
-		7296E11D286612F9008CD375 /* ContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
+		7296E11D286612F9008CD375 /* MovieScrollModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieScrollModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,7 +188,7 @@
 			children = (
 				7296E10A28655CB1008CD375 /* NetworkManager.swift */,
 				7296E10C28655D08008CD375 /* APIResponseModel.swift */,
-				7296E11D286612F9008CD375 /* ContentModel.swift */,
+				7296E11D286612F9008CD375 /* MovieScrollModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -349,7 +349,7 @@
 				7296E10428655ACD008CD375 /* View+extensions.swift in Sources */,
 				7296E10628655BDA008CD375 /* MovieItemView.swift in Sources */,
 				7259050A2864A55000004653 /* Movie_TimeApp.swift in Sources */,
-				7296E11E286612F9008CD375 /* ContentModel.swift in Sources */,
+				7296E11E286612F9008CD375 /* MovieScrollModel.swift in Sources */,
 				7296E11C286611BD008CD375 /* MovieScrollViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

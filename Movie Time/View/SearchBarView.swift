@@ -12,10 +12,13 @@ struct SearchBarView: View {
     @State private var textInput = ""
     var body: some View {
         HStack (alignment: .center) {
-            TextField( "Search", text: $textInput)
-                .padding(4.0)
-                .overlay(RoundedRectangle(cornerRadius: 5.0).stroke())
-                .padding()
+            TextField( "Search", text: $textInput).onSubmit {
+                performSearch(textInput)
+                hideKeyboard()
+            }
+            .padding(4.0)
+            .overlay(RoundedRectangle(cornerRadius: 5.0).stroke())
+            .padding()
             Button(
                 action: {
                     performSearch(textInput)

@@ -14,6 +14,8 @@ class MovieScrollViewModel: ObservableObject {
     @Published var movies: [Movie] = []
     @Published var totalResult = 0
     @Published var currentPage = 0
+    @Published var isEndOfResult = false
+    @Published var hasNoResult = false
     
     private var currentSearchTerm = ""
     
@@ -23,14 +25,15 @@ class MovieScrollViewModel: ObservableObject {
             self.movies = movieScrollModel.movies
             self.totalResult = movieScrollModel.totalResult
             self.currentPage = movieScrollModel.currentPage
+            self.hasNoResult = movieScrollModel.noResult
         }
-        
         currentSearchTerm = searchTerm
+        isEndOfResult = false
     }
     
     func fetchData() async {
         if currentPage * 10 >= totalResult {
-            print ("end of results")
+            isEndOfResult = true
             return
         }
         if let movieScrollModel = await  networkManager.getMovies(searchTerm: currentSearchTerm,page: self.currentPage) {
@@ -43,7 +46,6 @@ class MovieScrollViewModel: ObservableObject {
     func getSearchTerm() -> String {
         return currentSearchTerm
     }
-    
     
     
 }

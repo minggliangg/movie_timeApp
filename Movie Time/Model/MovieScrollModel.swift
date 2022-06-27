@@ -11,4 +11,5 @@ struct MovieScrollModel {
     let movies: [Movie]
     let totalResult: Int
     let currentPage: Int
+    var noResult: Bool = false
 }

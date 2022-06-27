@@ -27,6 +27,8 @@ class NetworkManager {
             guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Error while fetching data") }
             let result = try decoder.decode(APIResponse.self, from: data )
             return MovieScrollModel(movies: result.Search, totalResult: Int(result.totalResults) ?? 0, currentPage: page + 1)
+        } catch is DecodingError {
+            return MovieScrollModel(movies: [], totalResult:  0, currentPage: 0, noResult: true)
         } catch {
             print (error)
         }
